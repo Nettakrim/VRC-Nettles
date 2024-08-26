@@ -352,7 +352,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4c6e0adc6ac3ea1469a290f1106b12ea, type: 2}
+      objectReference: {fileID: 9100000, guid: 6143f8ff722590a45a99bcfb0083c059, type: 2}
     - target: {fileID: 6024617021316395744, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -552,7 +552,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gravity: 0.5
+  gravity: 0.4
   gravityCurve:
     serializedVersion: 2
     m_Curve: []
@@ -567,7 +567,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   immobileType: 0
-  immobile: 0
+  immobile: 0.2
   immobileCurve:
     serializedVersion: 2
     m_Curve: []
@@ -586,22 +586,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   colliders: []
-  limitType: 1
-  maxAngleX: 45
+  limitType: 3
+  maxAngleX: 20
   maxAngleXCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAngleZ: 45
+  maxAngleZ: 35
   maxAngleZCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  limitRotation: {x: 0, y: 0, z: 0}
+  limitRotation: {x: -5, y: 0, z: 0}
   limitRotationXCurve:
     serializedVersion: 2
     m_Curve: []
@@ -651,7 +651,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isAnimated: 0
+  isAnimated: 1
   resetWhenDisabled: 0
   parameter: 
   showGizmos: 1
@@ -884,9 +884,10 @@ MonoBehaviour:
     isDefault: 1
   - isEnabled: 0
     type: 3
-    animatorController: {fileID: 0}
-    mask: {fileID: 0}
-    isDefault: 1
+    animatorController: {fileID: 9100000, guid: 6143f8ff722590a45a99bcfb0083c059,
+      type: 2}
+    mask: {fileID: 31900000, guid: 10f0aeabb32af9347a514aeacfbad21f, type: 2}
+    isDefault: 0
   - isEnabled: 0
     type: 4
     animatorController: {fileID: 0}
@@ -916,6 +917,10 @@ MonoBehaviour:
     isDefault: 1
   AnimationPreset: {fileID: 0}
   animationHashSet:
+  - hash: -1756547404
+    name: Idle
+  - hash: 928921596
+    name: Tail
   - hash: 1238330162
     name: Eye Size
   - hash: 1862732010

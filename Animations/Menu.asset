@@ -24,6 +24,26 @@ MonoBehaviour:
     subParameters:
     - name: EyeSize
     labels: []
+  - name: Tail
+    icon: {fileID: 2800000, guid: 67e589e38f0f4c14ead423b5247e1f1d, type: 3}
+    type: 201
+    parameter:
+      name: TailToggle
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: TailH
+    - name: TailV
+    labels:
+    - name: Up
+      icon: {fileID: 0}
+    - name: Right
+      icon: {fileID: 0}
+    - name: Down
+      icon: {fileID: 0}
+    - name: Left
+      icon: {fileID: 0}
   - name: Config
     icon: {fileID: 2800000, guid: b9b3b6af0f73ad7459b80ab0bf506497, type: 3}
     type: 103
