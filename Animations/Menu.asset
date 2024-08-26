@@ -24,47 +24,13 @@ MonoBehaviour:
     subParameters:
     - name: EyeSize
     labels: []
-  - name: Hue Main
-    icon: {fileID: 2800000, guid: 936c428d67dc4384bab074e20935b7ea, type: 3}
-    type: 203
+  - name: Config
+    icon: {fileID: 2800000, guid: b9b3b6af0f73ad7459b80ab0bf506497, type: 3}
+    type: 103
     parameter:
       name: 
     value: 1
     style: 0
-    subMenu: {fileID: 0}
-    subParameters:
-    - name: HueMain
-    labels: []
-  - name: Noise Main
-    icon: {fileID: 2800000, guid: 15d657300b7dc6945b32134a6514e1d9, type: 3}
-    type: 203
-    parameter:
-      name: 
-    value: 1
-    style: 0
-    subMenu: {fileID: 0}
-    subParameters:
-    - name: NoiseMain
-    labels: []
-  - name: Hue Alt
-    icon: {fileID: 2800000, guid: b528296cb1c36354b811a6120c976e63, type: 3}
-    type: 203
-    parameter:
-      name: 
-    value: 1
-    style: 0
-    subMenu: {fileID: 0}
-    subParameters:
-    - name: HueAlt
-    labels: []
-  - name: Noise Alt
-    icon: {fileID: 2800000, guid: cacf79290e089c44f984b9c8bc056918, type: 3}
-    type: 203
-    parameter:
-      name: 
-    value: 1
-    style: 0
-    subMenu: {fileID: 0}
-    subParameters:
-    - name: NoiseAlt
+    subMenu: {fileID: 11400000, guid: bb90ea3bdf766b54c874e24533d38550, type: 2}
+    subParameters: []
     labels: []
