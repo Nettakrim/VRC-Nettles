@@ -328,6 +328,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.00000023045307
       objectReference: {fileID: 0}
+    - target: {fileID: 635547659545568360, guid: 093374323b5811746842ec69e59666f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       propertyPath: m_Name
@@ -352,7 +357,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 6143f8ff722590a45a99bcfb0083c059, type: 2}
+      objectReference: {fileID: 9100000, guid: 4c6e0adc6ac3ea1469a290f1106b12ea, type: 2}
     - target: {fileID: 6024617021316395744, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -923,6 +928,10 @@ MonoBehaviour:
     name: Tail
   - hash: 1238330162
     name: Eye Size
+  - hash: -906905905
+    name: Idle
+  - hash: 1841971323
+    name: Eye Position
   - hash: 1862732010
     name: Hue Main
   - hash: 1040654966

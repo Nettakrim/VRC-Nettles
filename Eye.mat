@@ -66,7 +66,10 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EyeH: 0
+    - _EyeMix: 0
     - _EyeSize: 2.81
+    - _EyeV: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -86,4 +89,5 @@ Material:
     - _Color: {r: 1, g: 0.9019608, b: 0.6666667, a: 1}
     - _EmissionColor: {r: 1.3041189, g: 1.1841584, b: 0.5871949, a: 1}
     - _EyeColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EyeRotation: {r: 0, g: 0, b: 0.75, a: 0.5}
   m_BuildTextureStacks: []

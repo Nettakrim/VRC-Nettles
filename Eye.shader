@@ -18,6 +18,10 @@ Shader "Custom/Eye"
         _NoiseSteps ("Noise Steps", Float) = 10.0
 
         _HueAlt ("Hue Alt", Range(0,6.2832)) = 0.0
+
+        _EyeMix ("Eye Mix", Range(0,1)) = 0.0
+
+        _EyeRotation ("Eye Rotation", Vector) = (0,0,0,0)
     }
     SubShader
     {
@@ -65,6 +69,9 @@ Shader "Custom/Eye"
         float _NoiseStrength;
         float _NoiseSteps;
 
+        float _EyeMix;
+        float4 _EyeRotation;
+
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
         // #pragma instancing_options assumeuniformscaling
@@ -93,8 +100,13 @@ Shader "Custom/Eye"
 
             fixed4 c = _Color * noise;
 
-            float fresnel = dot(IN.worldNormal, IN.viewDir);
+            float eyeH = _EyeRotation.x*_EyeRotation.z;
+            float eyeV = _EyeRotation.y*_EyeRotation.w;
+            float3 direction = lerp(normalize(mul(IN.viewDir, unity_ObjectToWorld)), normalize(float3(sin(eyeH),-cos(eyeH),eyeV)), _EyeMix);
+
+            float fresnel = dot(normalize(mul(IN.worldNormal, unity_ObjectToWorld)), normalize(direction));
             fresnel = saturate(_EyeSize-fresnel*_EyeSize);
+
             c = lerp(_EyeColor, c, fresnel*fresnel*fresnel*fresnel*fresnel);
 
             o.Emission = HueShift(c.rgb * c.a * _EmissionColor);

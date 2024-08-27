@@ -24,6 +24,26 @@ MonoBehaviour:
     subParameters:
     - name: EyeSize
     labels: []
+  - name: Eye Position
+    icon: {fileID: 2800000, guid: 6e2d52ef4bfb6624b900b6ce2463160d, type: 3}
+    type: 201
+    parameter:
+      name: EyeToggle
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: EyeH
+    - name: EyeV
+    labels:
+    - name: Up
+      icon: {fileID: 0}
+    - name: Right
+      icon: {fileID: 0}
+    - name: Down
+      icon: {fileID: 0}
+    - name: Left
+      icon: {fileID: 0}
   - name: Tail
     icon: {fileID: 2800000, guid: 67e589e38f0f4c14ead423b5247e1f1d, type: 3}
     type: 201
