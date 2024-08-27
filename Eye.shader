@@ -102,9 +102,14 @@ Shader "Custom/Eye"
 
             float eyeH = _EyeRotation.x*_EyeRotation.z;
             float eyeV = _EyeRotation.y*_EyeRotation.w;
-            float3 direction = normalize(lerp(IN.viewDir, normalize(mul(float3(sin(eyeH),-cos(eyeH),eyeV), unity_WorldToObject)), _EyeMix));
 
-            float fresnel = dot(IN.worldNormal, direction);
+            //this should work, not sure why it doesnt - it looks identical in unity but breaks in vrchat
+            //float3 direction = normalize(lerp(IN.viewDir, normalize(mul(float3(sin(eyeH),-cos(eyeH),eyeV), unity_WorldToObject)), _EyeMix));
+            //float fresnel = dot(IN.worldNormal, direction);
+
+            float3 direction = lerp(normalize(mul(IN.viewDir, unity_ObjectToWorld)), normalize(float3(sin(eyeH),-cos(eyeH),eyeV)), _EyeMix);
+            float fresnel = dot(normalize(mul(IN.worldNormal, unity_ObjectToWorld)), normalize(direction));
+
             fresnel = saturate(_EyeSize-fresnel*_EyeSize);
 
             c = lerp(_EyeColor, c, fresnel*fresnel*fresnel*fresnel*fresnel);
