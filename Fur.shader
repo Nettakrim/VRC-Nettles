@@ -29,7 +29,7 @@ Shader "Custom/Fur"
 	}
 
 	SubShader {
-		Tags{ "Queue" = "Geometry-1" "RenderType"="Opaque" "VRCFallback"="Standard"}
+		Tags{ "Queue" = "Geometry+10" "RenderType"="Opaque" "VRCFallback"="Standard"}
 
         ZWrite Off
         Cull Back

@@ -940,6 +940,8 @@ MonoBehaviour:
     name: Hue Alt
   - hash: -1973531019
     name: Noise Alt
+  - hash: 392329117
+    name: Outline Size
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:
