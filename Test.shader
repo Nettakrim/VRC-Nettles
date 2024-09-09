@@ -1,7 +1,5 @@
-Shader "Custom/Fur"
-{
-    Properties
-    {
+Shader "Custom/Test" {
+	Properties {
         _MainTex("Albedo", 2D) = "black" {} //fallback
         _Color ("Color", Color) = (1,1,1,1) //fallback
 
@@ -23,7 +21,6 @@ Shader "Custom/Fur"
 
         _NoiseStrengthGlow ("Noise Strength", Float) = 1.0
         _NoiseStepsGlow ("Noise Steps", Float) = 10.0
-
         _GlossinessGlow ("Smoothness Glow", Range(0,1)) = 0.5
         _MetallicGlow ("Metallic Glow", Range(0,1)) = 0.0
 	}
@@ -198,6 +195,6 @@ Shader "Custom/Fur"
             o.Alpha = col.a;
         }
         ENDCG
-    }
-    FallBack "Diffuse"
+	}
+	FallBack "Transparent/Cutout/VertexLit"
 }
