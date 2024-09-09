@@ -72,6 +72,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _HueAlt: 0
     - _HueMain: 0
     - _Intensity: 1
     - _Metallic: 0
@@ -79,6 +80,7 @@ Material:
     - _NoiseSteps: 2
     - _NoiseStrength: 0.25
     - _OcclusionStrength: 1
+    - _OutlineWidth: 0.005
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -95,4 +97,5 @@ Material:
     - _ColorMain: {r: 0.31764707, g: 0.3882353, b: 0.3137255, a: 1}
     - _Direction: {r: 0, g: 1, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 1, g: 0.94575167, b: 0.6745098, a: 1}
   m_BuildTextureStacks: []

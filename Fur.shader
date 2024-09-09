@@ -15,11 +15,66 @@ Shader "Custom/Fur"
         _NoiseSteps ("Noise Steps", Float) = 10.0
 
         _HueMain ("Hue Main", Range(0,6.2832)) = 0.0
+        _HueAlt ("Hue Alt", Range(0,6.2832)) = 0.0
+
+        _OutlineColor ("Outline color", Color) = (0,0,0,1)
+		_OutlineWidth ("Outline width", Range (0.0, 1.0)) = 0.5
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "VRCFallback"="Standard"}
+		Tags{ "Queue" = "Geometry-1" "RenderType"="Opaque" "VRCFallback"="Standard"}
         LOD 200
+
+		Pass //Outline from https://github.com/Shrimpey/Outlined-Diffuse-Shader-Fixed/blob/master/UniformOutline.shader
+		{
+			ZWrite Off
+			Cull Back
+			CGPROGRAM
+
+			#pragma vertex vert
+			#pragma fragment frag
+
+            uniform float _OutlineWidth;
+            uniform float3 _OutlineColor;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+            };
+        
+            struct v2f
+            {
+                float4 pos : POSITION;
+            };
+        
+
+			v2f vert(appdata v)
+			{
+				appdata original = v;
+				v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+
+				v2f o;
+				o.pos = UnityObjectToClipPos(v.vertex);
+				return o;
+
+			}
+
+            float _HueAlt;
+            float3 HueShift(float3 col)
+            {
+                const float3 k = float3(0.57735, 0.57735, 0.57735);
+                half cosAngle = cos(_HueAlt);
+                return col * cosAngle + cross(k, col) * sin(_HueAlt) + k * dot(k, col) * (1.0 - cosAngle);
+            }
+
+			half4 frag(v2f i) : COLOR
+			{
+                float3 col = HueShift(_OutlineColor);
+				return half4(col.r, col.g, col.b, 1.0);
+			}
+
+			ENDCG
+		}
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
