@@ -13,6 +13,8 @@ Shader "Custom/Glow"
         _NoiseStepsGlow ("Noise Steps", Float) = 10.0
 
         _HueAlt ("Hue Alt", Range(0,6.2832)) = 0.0
+
+        _VertexRounding ("Vertex Rounding", Float) = 0.0
     }
     SubShader
     {
@@ -55,8 +57,11 @@ Shader "Custom/Glow"
         half _Metallic;
         fixed4 _Color;
         fixed4 _EmissionColor;
+
         float _NoiseStrengthGlow;
         float _NoiseStepsGlow;
+
+        float _VertexRounding;
 
         UNITY_INSTANCING_BUFFER_START(Props)
 
@@ -66,6 +71,10 @@ Shader "Custom/Glow"
             UNITY_SETUP_INSTANCE_ID(v);
             UNITY_INITIALIZE_OUTPUT(Input,o);
 
+            if (_VertexRounding > 0) {
+                float rounding = 2 << ((int)max(10-_VertexRounding,5));
+                v.vertex = round(v.vertex*rounding)/rounding;
+            }
             o.id = frac(sin((float)(v.vertexID)));
         }
 

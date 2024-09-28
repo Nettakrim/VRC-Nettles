@@ -26,6 +26,8 @@ Shader "Custom/Fur"
 
         _GlossinessGlow ("Smoothness Glow", Range(0,1)) = 0.5
         _MetallicGlow ("Metallic Glow", Range(0,1)) = 0.0
+
+        _VertexRounding ("Vertex Rounding", Float) = 0.0
 	}
 
 	SubShader {
@@ -75,6 +77,8 @@ Shader "Custom/Fur"
         float _NoiseStrengthGlow;
         float _NoiseStepsGlow;
 
+        float _VertexRounding;
+
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -86,6 +90,11 @@ Shader "Custom/Fur"
         void vert (inout appdata v, out Input o) {
             UNITY_SETUP_INSTANCE_ID(v);
             UNITY_INITIALIZE_OUTPUT(Input,o);
+
+            if (_VertexRounding > 0) {
+                float rounding = 2 << ((int)max(10-_VertexRounding,5));
+                v.vertex = round(v.vertex*rounding)/rounding;
+            }
 
             o.id = frac(sin((float)(v.vertexID)));
             v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
@@ -160,6 +169,8 @@ Shader "Custom/Fur"
         float _NoiseStrength;
         float _NoiseSteps;
 
+        float _VertexRounding;
+
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
         // #pragma instancing_options assumeuniformscaling
@@ -171,6 +182,10 @@ Shader "Custom/Fur"
             UNITY_SETUP_INSTANCE_ID(v);
             UNITY_INITIALIZE_OUTPUT(Input,o);
 
+            if (_VertexRounding > 0) {
+                float rounding = 2 << ((int)max(10-_VertexRounding,5));
+                v.vertex = round(v.vertex*rounding)/rounding;
+            }
             o.id = frac(sin((float)(v.vertexID)));
         }
 

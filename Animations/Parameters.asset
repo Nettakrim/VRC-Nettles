@@ -73,3 +73,8 @@ MonoBehaviour:
     saved: 0
     defaultValue: 0
     networkSynced: 1
+  - name: VertexRounding
+    valueType: 1
+    saved: 1
+    defaultValue: 0
+    networkSynced: 1

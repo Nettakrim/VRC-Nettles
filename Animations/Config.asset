@@ -68,3 +68,14 @@ MonoBehaviour:
     subParameters:
     - name: OutlineSize
     labels: []
+  - name: Vertex Rounding
+    icon: {fileID: 2800000, guid: 9ae04fadf3e007e48a983c1d85905d1c, type: 3}
+    type: 203
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: VertexRounding
+    labels: []

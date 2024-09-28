@@ -942,6 +942,8 @@ MonoBehaviour:
     name: Noise Alt
   - hash: 392329117
     name: Outline Size
+  - hash: -1840333628
+    name: Vertex Rounding
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:
