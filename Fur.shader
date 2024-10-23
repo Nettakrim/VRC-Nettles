@@ -8,6 +8,7 @@ Shader "Custom/Fur"
         _ColorMain ("Color Main", Color) = (1,1,1,1)
         _ColorHigh ("Color High", Color) = (1,1,1,1)
         _ColorLow ("Color Low", Color) = (1,1,1,1)
+        _ColorHighlight ("Color Highlight", Color) = (1,1,1,1)
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 
@@ -97,7 +98,9 @@ Shader "Custom/Fur"
             }
 
             o.id = frac(sin((float)(v.vertexID)));
-            v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+            if (v.color.r > 0.25 || v.color.b < 0.75) {
+                v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
+            }
         }
 
         float _HueAlt;
@@ -165,6 +168,7 @@ Shader "Custom/Fur"
         fixed4 _ColorMain;
         fixed4 _ColorHigh;
         fixed4 _ColorLow;
+        fixed4 _ColorHighlight;
 
         float _NoiseStrength;
         float _NoiseSteps;
@@ -200,11 +204,16 @@ Shader "Custom/Fur"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float c = GammaToLinearSpace(IN.vertexCol.r);
-            c = ((round(c*3.999)/3.999)*2.0)-1.0;
+            fixed4 col;
+            if (c > 0.25 || IN.vertexCol.b < 0.75) {
+                c = ((round(c*3.999)/3.999)*2.0)-1.0;
 
-            c += (round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) - _NoiseStrength/2.0;
+                c += (round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) - _NoiseStrength/2.0;
 
-            fixed4 col = _ColorHigh*saturate(c) + _ColorMain*saturate(1-abs(c)) + _ColorLow*saturate(-c);
+                col = _ColorHigh*saturate(c) + _ColorMain*saturate(1-abs(c)) + _ColorLow*saturate(-c);
+            } else {
+                col = _ColorHighlight;
+            }
 
             o.Albedo = HueShift(col.rgb);
 
