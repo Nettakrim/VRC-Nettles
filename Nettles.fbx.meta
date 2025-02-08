@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fur
-    second: {fileID: 2100000, guid: ffd99c4bd5b666a4fbc598b67e9e5280, type: 2}
+    second: {fileID: 2100000, guid: d2709cee39e82dc4699f2a7aba29d6e8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
