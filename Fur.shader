@@ -9,6 +9,7 @@ Shader "Custom/Fur"
         _ColorHigh ("Color High", Color) = (1,1,1,1)
         _ColorLow ("Color Low", Color) = (1,1,1,1)
         _ColorHighlight ("Color Highlight", Color) = (1,1,1,1)
+        _ColorHighlightB ("Color Highlight B", Color) = (1,1,1,1)
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 
@@ -169,6 +170,7 @@ Shader "Custom/Fur"
         fixed4 _ColorHigh;
         fixed4 _ColorLow;
         fixed4 _ColorHighlight;
+        fixed4 _ColorHighlightB;
 
         float _NoiseStrength;
         float _NoiseSteps;
@@ -196,9 +198,11 @@ Shader "Custom/Fur"
         float _HueMain;
         float3 HueShift(float3 col)
         {
-            const float3 k = float3(0.57735, 0.57735, 0.57735);
-            half cosAngle = cos(_HueMain);
-            return col * cosAngle + cross(k, col) * sin(_HueMain) + k * dot(k, col) * (1.0 - cosAngle);
+            if (_HueMain < 3.14) {
+                return col * 1-_HueMain/3;
+            } else {
+                return float3(1.0, 1.0, 1.0) - col * (_HueMain-3.14) * 3;
+            }
         }
         
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -212,7 +216,7 @@ Shader "Custom/Fur"
 
                 col = _ColorHigh*saturate(c) + _ColorMain*saturate(1-abs(c)) + _ColorLow*saturate(-c);
             } else {
-                col = _ColorHighlight;
+                col = IN.vertexCol.g > 0.75 ? _ColorHighlightB : _ColorHighlight;
             }
 
             o.Albedo = HueShift(col.rgb);

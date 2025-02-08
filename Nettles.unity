@@ -466,6 +466,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2378248958019570526, guid: 093374323b5811746842ec69e59666f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -2060947860180587138, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -932,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchedFromSDKPipeline: 0
   completedSDKPipeline: 0
-  blueprintId: avtr_8d4fd426-9bbb-4b00-ab84-d35e197f28ab
+  blueprintId: avtr_24b45804-aa0f-44c4-9737-1e3c31235804
   contentType: 0
   assetBundleUnityVersion: 
   fallbackStatus: 3

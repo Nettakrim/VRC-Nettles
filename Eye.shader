@@ -8,7 +8,8 @@ Shader "Custom/Eye"
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 
-        [HDR] _EmissionColor ("EmissionColor", Color) = (0,0,0)
+        [HDR] _CustomEmissionColor ("Custom EmissionColor", Color) = (0,0,0)
+        [HDR] _EmissionColor ("EmissionColor", Color) = (0,0,0) //fallback
         _EmissionMap("Emission", 2D) = "white" {} //fallback
 
         _EyeColor ("Eye Color", Color) = (0, 0, 0)
@@ -57,13 +58,14 @@ Shader "Custom/Eye"
             float2 uv_MainTex;
             float3 worldNormal;
             float3 viewDir;
+            float4 vertexCol : COLOR;
             float id;
         };
 
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        fixed4 _EmissionColor;
+        fixed4 _CustomEmissionColor;
         fixed4 _EyeColor;
         float _EyeSize;
         float _NoiseStrength;
@@ -108,9 +110,13 @@ Shader "Custom/Eye"
 
             fresnel = saturate(_EyeSize-fresnel*_EyeSize);
 
+            if (IN.vertexCol.g > 0.75) {
+                fresnel = 0;
+            }
+
             c = lerp(_EyeColor, c, fresnel*fresnel*fresnel*fresnel*fresnel);
 
-            o.Emission = HueShift(c.rgb * c.a * _EmissionColor);
+            o.Emission = HueShift(c.rgb * c.a * _CustomEmissionColor);
 
             o.Albedo = HueShift(c.rgb);
 

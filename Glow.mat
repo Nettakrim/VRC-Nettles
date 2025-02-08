@@ -85,6 +85,6 @@ Material:
     - _VertexRounding: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.90272576, b: 0.6666667, a: 1}
-    - _EmissionColor: {r: 1.3041189, g: 1.1841584, b: 0.5871949, a: 1}
+    - _Color: {r: 1, g: 0.05490196, b: 0, a: 1}
+    - _EmissionColor: {r: 0.8584906, g: 0.10487125, b: 0.08503916, a: 1}
   m_BuildTextureStacks: []
