@@ -34,8 +34,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeMix
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -55,8 +55,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.x
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -76,8 +76,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.y
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -97,8 +97,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.z
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -118,8 +118,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.w
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   m_PPtrCurves: []
@@ -214,8 +214,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeMix
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -235,8 +235,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.x
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -256,8 +256,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.y
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -277,8 +277,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.z
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   - serializedVersion: 2
@@ -298,8 +298,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._EyeRotation.w
-    path: Armature/Hips/Spine/Spine2/Chest/Neck/Neck2/head/Eyes
-    classID: 23
+    path: Body
+    classID: 137
     script: {fileID: 0}
     flags: 16
   m_EulerEditorCurves: []

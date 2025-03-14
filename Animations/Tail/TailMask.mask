@@ -115,15 +115,15 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature/Hips/Spine/Spine2/Chest/shoulder.R/upper_arm.R/forearm.R/hand.R/thumb1.R/thumb2.R/thumb3.R
     m_Weight: 0
-  - m_Path: Armature/Hips/TailBase
+  - m_path: Armature/Hips.Copy/TailBase.copy
     m_Weight: 1
-  - m_Path: Armature/Hips/TailBase/tail1
+  - m_path: Armature/Hips.Copy/TailBase.Copy/tail1.Copy
     m_Weight: 1
-  - m_Path: Armature/Hips/TailBase/tail1/tail2
+  - m_path: Armature/Hips.Copy/TailBase.Copy/tail1.Copy/tail2.Copy
     m_Weight: 1
-  - m_Path: Armature/Hips/TailBase/tail1/tail2/tail3
+  - m_path: Armature/Hips.Copy/TailBase.Copy/tail1.Copy/tail2.Copy/tail3.Copy
     m_Weight: 1
-  - m_Path: Armature/Hips/TailBase/tail1/tail2/tail3/tail4
+  - m_path: Armature/Hips.Copy/TailBase.Copy/tail1.Copy/tail2.Copy/tail3.Copy/tail4.Copy
     m_Weight: 1
   - m_Path: Armature/Hips/thigh.L
     m_Weight: 0
