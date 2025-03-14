@@ -79,3 +79,14 @@ MonoBehaviour:
     subParameters:
     - name: VertexRounding
     labels: []
+  - name: FPS
+    icon: {fileID: 0}
+    type: 203
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: FPS
+    labels: []
