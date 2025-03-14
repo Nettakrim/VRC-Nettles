@@ -14,7 +14,7 @@ Shader "Custom/Eye"
         _EyeColor ("Eye Color", Color) = (0, 0, 0)
         _EyeSize ("Eye Size", Float) = 0.0
 
-        _NoiseStrength ("Noise Strength", Float) = 1.0
+        _NoiseStrengthGlow ("Noise Strength", Float) = 1.0
         _NoiseSteps ("Noise Steps", Float) = 10.0
 
         _HueAlt ("Hue Alt", Range(0,6.2832)) = 0.0
@@ -66,7 +66,7 @@ Shader "Custom/Eye"
         fixed4 _EmissionColor;
         fixed4 _EyeColor;
         float _EyeSize;
-        float _NoiseStrength;
+        float _NoiseStrengthGlow;
         float _NoiseSteps;
 
         float _EyeMix;
@@ -96,7 +96,7 @@ Shader "Custom/Eye"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            float noise = 1.0-(round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) + _NoiseStrength/2.0;
+            float noise = 1.0-(round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrengthGlow) + _NoiseStrengthGlow/2.0;
 
             fixed4 c = _Color * noise;
 
