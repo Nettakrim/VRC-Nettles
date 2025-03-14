@@ -76,7 +76,7 @@ Material:
     - _HueAlt: 0
     - _Metallic: 1
     - _Mode: 0
-    - _NoiseSteps: 4
+    - _NoiseSteps: 1
     - _NoiseStrength: 0.3
     - _OcclusionStrength: 1
     - _Parallax: 0.02

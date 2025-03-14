@@ -80,7 +80,7 @@ Material:
     - _MetallicGlow: 1
     - _Mode: 0
     - _NoiseSteps: 2
-    - _NoiseStepsGlow: 4
+    - _NoiseStepsGlow: 1
     - _NoiseStrength: 0.25
     - _NoiseStrengthGlow: 0.175
     - _OcclusionStrength: 1
@@ -97,10 +97,10 @@ Material:
     - _ColorA: {r: 0.35686275, g: 0.48235294, b: 0.30588236, a: 1}
     - _ColorB: {r: 0.31764707, g: 0.3882353, b: 0.3137255, a: 1}
     - _ColorC: {r: 0.27058825, g: 0.34509805, b: 0.30588236, a: 1}
-    - _ColorHigh: {r: 0.35686275, g: 0.48235294, b: 0.30588236, a: 1}
-    - _ColorHighlight: {r: 0.5411765, g: 0.8117647, b: 0.4509804, a: 1}
-    - _ColorLow: {r: 0.27058825, g: 0.34509805, b: 0.30588236, a: 1}
-    - _ColorMain: {r: 0.31764707, g: 0.3882353, b: 0.3137255, a: 1}
+    - _ColorHigh: {r: 1, g: 0, b: 0.2744317, a: 1}
+    - _ColorHighlight: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorLow: {r: 0.5660378, g: 0, b: 0, a: 1}
+    - _ColorMain: {r: 1, g: 0, b: 0, a: 1}
     - _Direction: {r: 0, g: 1, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 0.9019608, b: 0.6666667, a: 1}

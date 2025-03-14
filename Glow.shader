@@ -75,7 +75,7 @@ Shader "Custom/Glow"
                 float rounding = 2 << ((int)max(10-_VertexRounding,5));
                 v.vertex = round(v.vertex*rounding)/rounding;
             }
-            o.id = frac(sin((float)(v.vertexID)));
+            o.id = step(0, sin((float)(v.vertexID)));
         }
 
         float _HueAlt;

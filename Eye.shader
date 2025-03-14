@@ -83,7 +83,7 @@ Shader "Custom/Eye"
             UNITY_SETUP_INSTANCE_ID(v);
             UNITY_INITIALIZE_OUTPUT(Input,o);
 
-            o.id = frac(sin((float)(v.vertexID)));
+            o.id = step(0,sin((float)(v.vertexID)));
         }
 
         float _HueAlt;

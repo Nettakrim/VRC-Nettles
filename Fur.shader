@@ -97,7 +97,7 @@ Shader "Custom/Fur"
                 v.vertex = round(v.vertex*rounding)/rounding;
             }
 
-            o.id = frac(sin((float)(v.vertexID)));
+            o.id = step(0, sin((float)(v.vertexID)));
             if (v.color.r > 0.25 || v.color.b < 0.75) {
                 v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
             }
@@ -190,7 +190,7 @@ Shader "Custom/Fur"
                 float rounding = 2 << ((int)max(10-_VertexRounding,5));
                 v.vertex = round(v.vertex*rounding)/rounding;
             }
-            o.id = frac(sin((float)(v.vertexID)));
+            o.id = step(0.5, sin((float)(v.vertexID)));
         }
 
         float _HueMain;
@@ -208,12 +208,17 @@ Shader "Custom/Fur"
             if (c > 0.25 || IN.vertexCol.b < 0.75) {
                 c = ((round(c*3.999)/3.999)*2.0)-1.0;
 
-                c += (round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) - _NoiseStrength/2.0;
+                c += (round(IN.id*_NoiseSteps)/_NoiseSteps * 0.25) - 0.125;
 
                 col = _ColorHigh*saturate(c) + _ColorMain*saturate(1-abs(c)) + _ColorLow*saturate(-c);
             } else {
                 col = _ColorHighlight;
             }
+
+            col = sqrt(col);
+            col = floor(col*4.0)/4.0;
+            col = col*col;
+            col *= _NoiseStrength;
 
             o.Albedo = HueShift(col.rgb);
 

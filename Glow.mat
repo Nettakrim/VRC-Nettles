@@ -73,7 +73,7 @@ Material:
     - _Metallic: 1
     - _Mode: 0
     - _NoiseSteps: 4
-    - _NoiseStepsGlow: 4
+    - _NoiseStepsGlow: 1
     - _NoiseStrength: 0.175
     - _NoiseStrengthGlow: 0.175
     - _OcclusionStrength: 1
