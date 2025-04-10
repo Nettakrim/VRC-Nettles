@@ -58,6 +58,7 @@ Shader "Custom/Eye"
             float3 worldNormal;
             float3 viewDir;
             float id;
+            float3 normalCol;
         };
 
         half _Glossiness;
@@ -84,6 +85,8 @@ Shader "Custom/Eye"
             UNITY_INITIALIZE_OUTPUT(Input,o);
 
             o.id = frac(sin((float)(v.vertexID)));
+
+            o.normalCol = v.normal;
         }
 
         float _HueAlt;
@@ -98,7 +101,7 @@ Shader "Custom/Eye"
         {
             float noise = 1.0-(round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) + _NoiseStrength/2.0;
 
-            fixed4 c = _Color * noise;
+            float3 c = (normalize(IN.normalCol)+1)/2 * noise;
 
             float eyeH = _EyeRotation.x*_EyeRotation.z;
             float eyeV = _EyeRotation.y*_EyeRotation.w;
@@ -110,13 +113,13 @@ Shader "Custom/Eye"
 
             c = lerp(_EyeColor, c, fresnel*fresnel*fresnel*fresnel*fresnel);
 
-            o.Emission = HueShift(c.rgb * c.a * _EmissionColor);
+            o.Emission = HueShift(c.rgb * _EmissionColor);
 
             o.Albedo = HueShift(c.rgb);
 
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            o.Alpha = 1;
         }
         ENDCG
     }

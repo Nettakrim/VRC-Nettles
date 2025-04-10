@@ -66,6 +66,7 @@ Shader "Custom/Fur"
             float3 viewDir;
             float4 vertexCol : COLOR;
             float id;
+            float3 normalCol;
         };
 
         half _GlossinessGlow;
@@ -101,6 +102,8 @@ Shader "Custom/Fur"
             if (v.color.r > 0.25 || v.color.b < 0.75) {
                 v.vertex.xyz += _OutlineWidth * normalize(v.vertex.xyz);
             }
+
+            o.normalCol = v.normal;
         }
 
         float _HueAlt;
@@ -115,15 +118,15 @@ Shader "Custom/Fur"
         {
             float noise = 1.0-(round(IN.id*_NoiseStepsGlow)/_NoiseStepsGlow * _NoiseStrengthGlow) + _NoiseStrengthGlow/2.0;
 
-            fixed4 c = _OutlineColor * noise;
+            float3 c = (normalize(IN.normalCol.zyx)+1)/2 * noise;
 
-            o.Emission = HueShift(c.rgb * c.a * _OutlineEmission);
+            o.Emission = HueShift(c.rgb * _OutlineEmission);
 
             o.Albedo = HueShift(c.rgb);
 
             o.Metallic = _MetallicGlow;
             o.Smoothness = _GlossinessGlow;
-            o.Alpha = c.a;
+            o.Alpha = 1;
         }
 		ENDCG
 
@@ -160,6 +163,7 @@ Shader "Custom/Fur"
             float3 viewDir;
             float4 vertexCol : COLOR;
             float id;
+            float3 normalCol;
         };
 
         half _Glossiness;
@@ -191,6 +195,8 @@ Shader "Custom/Fur"
                 v.vertex = round(v.vertex*rounding)/rounding;
             }
             o.id = frac(sin((float)(v.vertexID)));
+
+            o.normalCol = v.normal;
         }
 
         float _HueMain;
@@ -204,22 +210,17 @@ Shader "Custom/Fur"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float c = GammaToLinearSpace(IN.vertexCol.r);
-            fixed4 col;
             if (c > 0.25 || IN.vertexCol.b < 0.75) {
                 c = ((round(c*3.999)/3.999)*2.0)-1.0;
 
                 c += (round(IN.id*_NoiseSteps)/_NoiseSteps * _NoiseStrength) - _NoiseStrength/2.0;
-
-                col = _ColorHigh*saturate(c) + _ColorMain*saturate(1-abs(c)) + _ColorLow*saturate(-c);
-            } else {
-                col = _ColorHighlight;
             }
 
-            o.Albedo = HueShift(col.rgb);
+            o.Albedo = HueShift(normalize(IN.normalCol.zyx)) * sqrt(max((c+1), 0.5)) * 2;
 
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = col.a;
+            o.Alpha = 1;
         }
         ENDCG
     }

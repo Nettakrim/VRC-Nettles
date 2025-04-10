@@ -51,6 +51,7 @@ Shader "Custom/Glow"
             float3 worldNormal;
             float3 viewDir;
             float id;
+            float3 normalCol;
         };
 
         half _Glossiness;
@@ -76,6 +77,8 @@ Shader "Custom/Glow"
                 v.vertex = round(v.vertex*rounding)/rounding;
             }
             o.id = frac(sin((float)(v.vertexID)));
+
+            o.normalCol = v.normal;
         }
 
         float _HueAlt;
@@ -90,15 +93,15 @@ Shader "Custom/Glow"
         {
             float noise = 1.0-(round(IN.id*_NoiseStepsGlow)/_NoiseStepsGlow * _NoiseStrengthGlow) + _NoiseStrengthGlow/2.0;
 
-            fixed4 c = _Color * noise;
+            float3 c = (normalize(IN.normalCol)+1)/2 * noise;
 
-            o.Emission = HueShift(c.rgb * c.a * _EmissionColor);
+            o.Emission = HueShift(c.rgb * _EmissionColor);
 
             o.Albedo = HueShift(c.rgb);
 
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            o.Alpha = 1;
         }
         ENDCG
     }
