@@ -1285,6 +1285,12 @@ RotationConstraint:
   m_Sources:
   - sourceTransform: {fileID: 1758201601}
     weight: 1
+--- !u!4 &1306360536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4649250204733187657, guid: 093374323b5811746842ec69e59666f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1310291393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1310291393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1557,6 +1563,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1310291459}
+    - targetCorrespondingSourceObject: {fileID: 2397948770163455683, guid: 093374323b5811746842ec69e59666f8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1310291463}
     - targetCorrespondingSourceObject: {fileID: -9127934359184484946, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       insertIndex: -1
@@ -2286,6 +2296,24 @@ RotationConstraint:
   m_Sources:
   - sourceTransform: {fileID: 1844986931}
     weight: 1
+--- !u!114 &1310291463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310291454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1888410255, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetBones:
+  - transform: {fileID: 1306360536}
+    scaleFactor: 0
+    applyCondition: 0
+    defaultScaleFactorAssigned: 1
+  globalScaleFactor: 1
 --- !u!4 &1312105044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7029599846245859139, guid: 093374323b5811746842ec69e59666f8,
