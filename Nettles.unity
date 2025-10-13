@@ -494,7 +494,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
       propertyPath: m_Name
-      value: Nettles
+      value: SpookyNettles
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 093374323b5811746842ec69e59666f8,
         type: 3}
@@ -932,7 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchedFromSDKPipeline: 0
   completedSDKPipeline: 0
-  blueprintId: 
+  blueprintId: avtr_84d11f44-d52f-4e56-96fe-1b7f50ae9b58
   contentType: 0
   assetBundleUnityVersion: 
   fallbackStatus: 3

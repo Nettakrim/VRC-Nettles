@@ -24,21 +24,7 @@ Shader "Custom/Fur"
                 Pass Replace
             }
 
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-            #pragma target 3.0
-
-            #include "UnityCG.cginc"
-
-            float4 vert(appdata_base v) : POSITION {
-                return UnityObjectToClipPos (v.vertex);
-            }
-
-            fixed4 frag(float4 sp:VPOS) : SV_Target {
-                return fixed4(1.0,1.0,1.0,1.0);
-            }
-            ENDCG
+            ColorMask 0
         }
 
         Pass {
@@ -69,7 +55,7 @@ Shader "Custom/Fur"
                 uint vertexID : SV_VertexID;
             };
 
-            Varyings vert(appdata v) : POSITION {
+            Varyings vert(appdata v) {
                 Varyings o;
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.id = frac(sin((float)(v.vertexID)));
@@ -77,12 +63,20 @@ Shader "Custom/Fur"
             }
 
             fixed4 frag(Varyings v) : SV_Target {
-                float x = v.pos.x/_ScreenParams.x;
+                float x = frac(v.pos.x/_ScreenParams.x);
+
+                float r = ceil(v.id*2.0)/2.0;
+                if (x > 0.5) {
+                    x += (r - 0.5)/100;
+                } else {
+                    x -= (r - 0.5)/100;
+                }
+
                 float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
                 alpha = alpha*alpha*(3-2*alpha);
                 alpha = 1-(alpha*alpha);
 
-                alpha *= (ceil(v.id*2.0) + 254) / 256;
+                alpha *= (r + 80) / 81;
 
                 alpha = 1-alpha;
 
