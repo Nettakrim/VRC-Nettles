@@ -18,31 +18,6 @@ MonoBehaviour:
     saved: 1
     defaultValue: 0.5
     networkSynced: 1
-  - name: HueMain
-    valueType: 1
-    saved: 1
-    defaultValue: 0
-    networkSynced: 1
-  - name: NoiseMain
-    valueType: 1
-    saved: 1
-    defaultValue: 0
-    networkSynced: 1
-  - name: HueAlt
-    valueType: 1
-    saved: 1
-    defaultValue: 0
-    networkSynced: 1
-  - name: NoiseAlt
-    valueType: 1
-    saved: 1
-    defaultValue: 0
-    networkSynced: 1
-  - name: OutlineSize
-    valueType: 1
-    saved: 1
-    defaultValue: 0.5
-    networkSynced: 1
   - name: TailToggle
     valueType: 0
     saved: 0
@@ -71,10 +46,5 @@ MonoBehaviour:
   - name: EyeV
     valueType: 1
     saved: 0
-    defaultValue: 0
-    networkSynced: 1
-  - name: VertexRounding
-    valueType: 1
-    saved: 1
     defaultValue: 0
     networkSynced: 1

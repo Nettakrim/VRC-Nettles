@@ -1094,18 +1094,6 @@ MonoBehaviour:
     name: Idle
   - hash: 1841971323
     name: Eye Position
-  - hash: 1862732010
-    name: Hue Main
-  - hash: 1040654966
-    name: Noise Main
-  - hash: 415079930
-    name: Hue Alt
-  - hash: -1973531019
-    name: Noise Alt
-  - hash: 392329117
-    name: Outline Size
-  - hash: -1840333628
-    name: Vertex Rounding
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:

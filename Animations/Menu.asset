@@ -64,13 +64,3 @@ MonoBehaviour:
       icon: {fileID: 0}
     - name: Left
       icon: {fileID: 0}
-  - name: Config
-    icon: {fileID: 2800000, guid: b9b3b6af0f73ad7459b80ab0bf506497, type: 3}
-    type: 103
-    parameter:
-      name: 
-    value: 1
-    style: 0
-    subMenu: {fileID: 11400000, guid: bb90ea3bdf766b54c874e24533d38550, type: 2}
-    subParameters: []
-    labels: []
