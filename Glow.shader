@@ -18,7 +18,7 @@ Shader "Custom/Glow"
     }
     SubShader
     {
-        Tags { "Queue" = "Geometry+11" "RenderType"="Opaque" "VRCFallback"="Standard"}
+        Tags { "Queue" = "Transparent+11" "RenderType"="Opaque" "VRCFallback"="Standard"}
         LOD 200
 
         CGPROGRAM
