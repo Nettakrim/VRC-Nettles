@@ -34,6 +34,7 @@ Shader "Custom/Glow"
 
             float _Slope;
             float _Offset;
+            float _VRChatCameraMode;
 
             struct Varyings
             {
@@ -60,7 +61,7 @@ Shader "Custom/Glow"
 
                 fixed4 c = _Color * noise;
 
-                float x = frac(v.pos.x/_ScreenParams.x);
+                float x = _VRChatCameraMode > 0 ? 0.5 : frac(v.pos.x/_ScreenParams.x);
                 float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
                 c.a = alpha*0.8;
 

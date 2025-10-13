@@ -77,7 +77,7 @@ Material:
     - _NoiseStrength: 0.175
     - _NoiseStrengthGlow: 0.175
     - _OcclusionStrength: 1
-    - _Offset: 0.15
+    - _Offset: 0.2
     - _Parallax: 0.02
     - _Slope: 0.15
     - _SmoothnessTextureChannel: 0

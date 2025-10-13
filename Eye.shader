@@ -68,6 +68,8 @@ Shader "Custom/Eye"
 
             float _Slope;
             float _Offset;
+            float _VRChatCameraMode;
+            float _VRChatMirrorMode;
 
             Varyings vert(appdata v) {
                 Varyings o;
@@ -84,7 +86,7 @@ Shader "Custom/Eye"
 
                 fixed4 c = _Color * noise;
 
-                float x = frac(v.pos.x/_ScreenParams.x);
+                float x = _VRChatCameraMode > 0 ? 0.5 : frac(v.pos.x/_ScreenParams.x);
                 float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
                 c.a = alpha*0.8;
 
@@ -96,7 +98,12 @@ Shader "Custom/Eye"
 
                 fresnel = saturate(_EyeSize-fresnel*_EyeSize);
 
-                c = lerp(lerp(_EyeColorA,_EyeColorB,alpha), c, fresnel*fresnel*fresnel*fresnel*fresnel);
+                float4 eyeColor = lerp(_EyeColorA,_EyeColorB,alpha);
+                if (_VRChatCameraMode > 0 || _VRChatMirrorMode > 0) {
+                    eyeColor.a = 0;
+                }
+
+                c = lerp(eyeColor, c, fresnel*fresnel*fresnel*fresnel*fresnel);
 
                 return c;
             }

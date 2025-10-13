@@ -42,6 +42,7 @@ Shader "Custom/Fur"
 
             float _Slope;
             float _Offset;
+            float _VRChatCameraMode;
 
             struct Varyings
             {
@@ -63,7 +64,7 @@ Shader "Custom/Fur"
             }
 
             fixed4 frag(Varyings v) : SV_Target {
-                float x = frac(v.pos.x/_ScreenParams.x);
+                float x = _VRChatCameraMode > 0 ? 0.5 : frac(v.pos.x/_ScreenParams.x);
 
                 float r = ceil(v.id*2.0)/2.0;
                 if (x > 0.5) {

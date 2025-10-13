@@ -79,7 +79,7 @@ Material:
     - _NoiseSteps: 4
     - _NoiseStrength: 0.3
     - _OcclusionStrength: 1
-    - _Offset: 0.15
+    - _Offset: 0.2
     - _Parallax: 0.02
     - _Slope: 0.15
     - _SmoothnessTextureChannel: 0
