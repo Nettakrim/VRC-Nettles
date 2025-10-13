@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Eye
-  m_Shader: {fileID: 4800000, guid: 7cba4d49c52b55a4ea139265492662f1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 0b7113dea2069fc4e8943843eff19f70, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
+  m_ValidKeywords:
   - _EMISSION
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -89,7 +89,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.85882354, g: 0.85882354, b: 0.85882354, a: 1}
+    - _EmissionColor: {r: 7.4642644, g: 7.4642644, b: 7.4642644, a: 1}
     - _EyeColor: {r: 1, g: 1, b: 1, a: 0}
     - _EyeColorA: {r: 0, g: 0, b: 0, a: 1}
     - _EyeColorB: {r: 1, g: 1, b: 1, a: 1}
