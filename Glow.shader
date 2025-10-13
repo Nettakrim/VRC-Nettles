@@ -12,95 +12,62 @@ Shader "Custom/Glow"
         _NoiseStrengthGlow ("Noise Strength", Float) = 1.0
         _NoiseStepsGlow ("Noise Steps", Float) = 10.0
 
-        _HueAlt ("Hue Alt", Range(0,6.2832)) = 0.0
-
-        _VertexRounding ("Vertex Rounding", Float) = 0.0
+        _Slope ("Slope", Float) = 0.1
+        _Offset ("Offset", Float) = 0.1
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent+11" "RenderType"="Opaque" "VRCFallback"="Standard"}
+        Tags { "Queue" = "Transparent+11" "RenderType"="Transparent" "VRCFallback"="Standard"}
+        Blend OneMinusSrcAlpha SrcAlpha
         LOD 200
 
-        CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert
+        Pass {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma target 3.0
 
-  
-        #pragma target 3.5
+            fixed4 _Color;
 
-        sampler2D _MainTex;
+            float _NoiseStrengthGlow;
+            float _NoiseStepsGlow;
 
-        struct appdata
-        {
-            float4 vertex    : POSITION;  
-            float3 normal    : NORMAL;    
-            float4 texcoord  : TEXCOORD0;
-            float4 texcoord1 : TEXCOORD1;
-            float4 texcoord2 : TEXCOORD2;
-            float4 tangent   : TANGENT;  
-            float4 color     : COLOR;
+            float _Slope;
+            float _Offset;
 
-            uint vertexID : SV_VertexID;
-            uint instanceID : SV_InstanceID;
+            struct Varyings
+            {
+                float4 pos : SV_POSITION;
+                float id : TEXCOORD0;
+            };
 
-        };
+            struct appdata
+            {
+                float4 vertex : POSITION;  
+                uint vertexID : SV_VertexID;
+            };
 
-        struct Input
-        {
-            float2 uv_MainTex;
-            float3 worldNormal;
-            float3 viewDir;
-            float id;
-        };
-
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
-        fixed4 _EmissionColor;
-
-        float _NoiseStrengthGlow;
-        float _NoiseStepsGlow;
-
-        float _VertexRounding;
-
-        UNITY_INSTANCING_BUFFER_START(Props)
-
-        UNITY_INSTANCING_BUFFER_END(Props)
-
-        void vert (inout appdata v, out Input o) {
-            UNITY_SETUP_INSTANCE_ID(v);
-            UNITY_INITIALIZE_OUTPUT(Input,o);
-
-            if (_VertexRounding > 0) {
-                float rounding = 2 << ((int)max(10-_VertexRounding,5));
-                v.vertex = round(v.vertex*rounding)/rounding;
+            Varyings vert(appdata v) {
+                Varyings o;
+                o.pos = UnityObjectToClipPos(v.vertex);
+                o.id = frac(sin((float)(v.vertexID)));
+                return o;
             }
-            o.id = frac(sin((float)(v.vertexID)));
+
+            fixed4 frag(Varyings v) : SV_Target
+            {
+                float noise = 1.0-(round(v.id*_NoiseStepsGlow)/_NoiseStepsGlow * _NoiseStrengthGlow) + _NoiseStrengthGlow/2.0;
+
+                fixed4 c = _Color * noise;
+
+                float x = frac(v.pos.x/_ScreenParams.x);
+                float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
+                c.a = alpha*0.8;
+
+                return c;
+            }
+            ENDCG
         }
-
-        float _HueAlt;
-        float3 HueShift(float3 col)
-        {
-            const float3 k = float3(0.57735, 0.57735, 0.57735);
-            half cosAngle = cos(_HueAlt);
-            return col * cosAngle + cross(k, col) * sin(_HueAlt) + k * dot(k, col) * (1.0 - cosAngle);
-        }
-
-        void surf (Input IN, inout SurfaceOutputStandard o)
-        {
-            float noise = 1.0-(round(IN.id*_NoiseStepsGlow)/_NoiseStepsGlow * _NoiseStrengthGlow) + _NoiseStrengthGlow/2.0;
-
-            fixed4 c = _Color * noise;
-
-            o.Emission = HueShift(c.rgb * c.a * _EmissionColor);
-
-            o.Albedo = HueShift(c.rgb);
-
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
-        }
-        ENDCG
     }
     FallBack "Diffuse"
 }

@@ -51,7 +51,7 @@ Shader "Custom/Fur"
 
             struct appdata
             {
-                float4 vertex    : POSITION;  
+                float4 vertex : POSITION;  
                 uint vertexID : SV_VertexID;
             };
 
@@ -71,6 +71,7 @@ Shader "Custom/Fur"
                 } else {
                     x -= (r - 0.5)/100;
                 }
+                x += (r - 0.5)/100.0 * sign(x-0.5);
 
                 float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
                 alpha = alpha*alpha*(3-2*alpha);
