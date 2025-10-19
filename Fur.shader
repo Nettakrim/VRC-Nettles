@@ -9,6 +9,7 @@ Shader "Custom/Fur"
 
         _Slope ("Slope", Float) = 0.1
         _Offset ("Offset", Float) = 0.1
+        _Spooky ("Spooky", Float) = 1
 	}
 
 	SubShader {
@@ -17,24 +18,10 @@ Shader "Custom/Fur"
         Cull Back
 
         Pass {
-            Stencil {
-                Ref 10
-                ReadMask 10
-                Comp Always
-                Pass Replace
-            }
-
             ColorMask 0
         }
 
         Pass {
-            Stencil {
-                Ref 10
-                ReadMask 10
-                Comp Equal
-                Pass Zero
-            }
-
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -42,6 +29,7 @@ Shader "Custom/Fur"
 
             float _Slope;
             float _Offset;
+            float _Spooky;
             float _VRChatCameraMode;
 
             struct Varyings
@@ -74,7 +62,7 @@ Shader "Custom/Fur"
                 }
                 x += (r - 0.5)/100.0 * sign(x-0.5);
 
-                float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
+                float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope * _Spooky);
                 alpha = alpha*alpha*(3-2*alpha);
                 alpha = 1-(alpha*alpha);
 

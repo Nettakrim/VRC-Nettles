@@ -64,3 +64,14 @@ MonoBehaviour:
       icon: {fileID: 0}
     - name: Left
       icon: {fileID: 0}
+  - name: Spooky
+    icon: {fileID: 2800000, guid: a78e9de75f39c364dbf2c7743fd50948, type: 3}
+    type: 203
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: Spooky
+    labels: []

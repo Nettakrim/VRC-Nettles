@@ -14,6 +14,7 @@ Shader "Custom/Glow"
 
         _Slope ("Slope", Float) = 0.1
         _Offset ("Offset", Float) = 0.1
+        _Spooky ("Spooky", Float) = 1
     }
     SubShader
     {
@@ -34,6 +35,7 @@ Shader "Custom/Glow"
 
             float _Slope;
             float _Offset;
+            float _Spooky;
             float _VRChatCameraMode;
 
             struct Varyings
@@ -62,7 +64,7 @@ Shader "Custom/Glow"
                 fixed4 c = _Color * noise;
 
                 float x = _VRChatCameraMode > 0 ? 0.5 : frac(v.pos.x/_ScreenParams.x);
-                float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope);
+                float alpha = saturate(min(x-_Offset,1-_Offset-x)/_Slope * _Spooky);
                 c.a = alpha*0.8;
 
                 return c;

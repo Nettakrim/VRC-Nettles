@@ -932,7 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchedFromSDKPipeline: 0
   completedSDKPipeline: 0
-  blueprintId: 
+  blueprintId: avtr_38151778-00e3-496e-89cf-8cd605b19c49
   contentType: 0
   assetBundleUnityVersion: 
   fallbackStatus: 3
@@ -1094,6 +1094,8 @@ MonoBehaviour:
     name: Idle
   - hash: 1841971323
     name: Eye Position
+  - hash: 1925446883
+    name: Spooky
   autoFootsteps: 1
   autoLocomotion: 1
   collider_head:
